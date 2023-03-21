@@ -5,6 +5,7 @@ package no.hvl.dat110.chordoperations;
 
 import java.math.BigInteger;
 import java.rmi.RemoteException;
+import java.security.NoSuchAlgorithmException;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -41,7 +42,12 @@ public class StabilizationProtocols extends TimerTask {
 		} else {
 			updateSuccessor();
 			stabilizeRing();
-			protocols.fixFingerTable();
+			try {
+				protocols.fixFingerTable();
+			} catch (NoSuchAlgorithmException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			checkPredecessor();
 			printInfo();
 		}

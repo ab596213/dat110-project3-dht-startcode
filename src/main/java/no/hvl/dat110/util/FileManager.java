@@ -56,15 +56,17 @@ public class FileManager {
 		this.chordnode = chordnode;
 	}
 	
-	public void createReplicaFiles() {
+	public void createReplicaFiles() throws NoSuchAlgorithmException {
 	 	
 		// set a loop where size = numReplicas
-		
+		for (int i = 0; i < Util.numReplicas; i++) {
 		// replicate by adding the index to filename
-		
+			String file = filename+i;
 		// hash the replica
+		// store the hash in the replicafiles array
+			replicafiles[i] = Hash.hashOf(file);
+		}
 		
-		// store the hash in the replicafiles array.
 	}
 	
     /**
