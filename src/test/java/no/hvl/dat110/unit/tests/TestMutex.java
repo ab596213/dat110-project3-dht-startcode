@@ -4,6 +4,7 @@ package no.hvl.dat110.unit.tests;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 import java.rmi.RemoteException;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -35,7 +36,7 @@ class TestMutex {
 	}
 
 	@Test
-	void test() throws InterruptedException, RemoteException {
+	void test() throws InterruptedException, RemoteException, NoSuchAlgorithmException {
 		
 		// retrieve the processes stubs
 		NodeInterface p1 = Util.getProcessStub("process1", 9091);
@@ -109,6 +110,9 @@ class TestMutex {
 			try {
 				reply = node.requestMutexWriteOperation(peer, updates, activepeers);
 			} catch (RemoteException e) {
+				e.printStackTrace();
+			} catch (NoSuchAlgorithmException e) {
+				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}

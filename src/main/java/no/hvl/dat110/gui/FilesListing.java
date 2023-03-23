@@ -7,6 +7,7 @@ import java.awt.event.MouseListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.rmi.RemoteException;
+import java.security.NoSuchAlgorithmException;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.Set;
@@ -99,7 +100,7 @@ public class FilesListing extends JFrame implements PropertyChangeListener {
 		dlmodel.addElement(filename);
 	}
 	
-	private void findFile(String filename) throws RemoteException {
+	private void findFile(String filename) throws RemoteException, NoSuchAlgorithmException {
  
 		Set<Message> activepeers = filemanager.requestActiveNodesForFile(filename);
 		

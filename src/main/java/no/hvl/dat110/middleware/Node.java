@@ -181,11 +181,12 @@ public class Node extends UnicastRemoteObject implements NodeInterface {
 	}
 	
 	
-	/** Mutex Section */
+	/** Mutex Section 
+	 * @throws NoSuchAlgorithmException */
 
 	@Override
 	public boolean requestMutexWriteOperation(Message message, byte[] updates, Set<Message> activepeers)
-			throws RemoteException {
+			throws RemoteException, NoSuchAlgorithmException {
 
 		this.message = message;
 		this.activenodesforfile = activepeers;

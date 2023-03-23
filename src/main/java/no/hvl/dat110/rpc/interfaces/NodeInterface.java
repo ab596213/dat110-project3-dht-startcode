@@ -9,6 +9,7 @@ package no.hvl.dat110.rpc.interfaces;
 import java.math.BigInteger;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -57,9 +58,10 @@ public interface NodeInterface extends Remote {
 	/** Remote-Write Protocol */
 	public void requestRemoteWriteOperation(byte[] updates, Set<Message> activenodes) throws RemoteException;
 	
-	/** Concerns mutual exclusion algorithm*/
+	/** Concerns mutual exclusion algorithm
+	 * @throws NoSuchAlgorithmException */
 	
-	public boolean requestMutexWriteOperation(Message message, byte[] updates, Set<Message> messages) throws RemoteException;
+	public boolean requestMutexWriteOperation(Message message, byte[] updates, Set<Message> messages) throws RemoteException, NoSuchAlgorithmException;
 	
 	public void acquireLock() throws RemoteException;
 	
